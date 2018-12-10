@@ -1,6 +1,7 @@
 #!/bin/bash
-# UserRecon v1.0
+# UserRecon v1.5
 # Author: @thelinuxchoice
+# Redeveloper: @zbturtle
 # https://github.com/thelinuxchoice/usercheck
 
 trap 'printf "\n";partial;exit 1' 2
@@ -18,6 +19,7 @@ printf "\e[1;77m | |_| \__ \  __/ |  |  _ <  __/ (_| (_) | | | | \e[0m\e[1;92m\ 
 printf "\e[1;77m  \___/|___/\___|_|  |_| \_\___|\___\___/|_| |_|  \e[0m\e[1;92m\        / \e[0m\n"
 printf "                   \e[1;92mv1.0, Author: @thelinuxchoice\e[0m   \e[1;92m\  __  / \e[0m\n"
 printf "                                                    \e[1;92m'.__.' \e[0m\n"
+printf "                                \e[1;92m'Redeveloped by: @zbturtle' \e[0m\n"
                                                 
 
 
@@ -84,12 +86,12 @@ fi
 ## YOUTUBE
 
 printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] YouTube: \e[0m"
-check_youtube=$(curl -s "https://www.youtube.com/$username" -L -H "Accept-Language: en" | grep -o 'Not Found'; echo $?)
+check_youtube=$(curl -s "https://www.youtube.com/channels/$username" -L -H "Accept-Language: en" | grep -o 'Not Found'; echo $?)
 
 
 if [[ $check_youtube == *'1'* ]]; then
-printf "\e[1;92m Found!\e[0m https://www.youtube.com/%s\n" $username
-printf "https://www.youtube.com/%s\n" $username >> $username.txt
+printf "\e[1;92m Found!\e[0m https://www.youtube.com/channels/%s\n" $username
+printf "https://www.youtube.com/channels/%s\n" $username >> $username.txt
 elif [[ $check_youtube == *'0'* ]]; then
 printf "\e[1;93mNot Found!\e[0m\n"
 fi
@@ -162,14 +164,14 @@ fi
 ## GITHUB
 
 printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Github: \e[0m"
-check1=$(curl -s -i "https://www.github.com/$username" -H "Accept-Language: en" -L --user-agent '"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:0.9.3) Gecko/20010801"' | grep -o '404 Not Found' ; echo $?)
+check1=$(curl -s -i "https://www.github.com/search/$username" -H "Accept-Language: en" -L --user-agent '"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:0.9.3) Gecko/20010801"' | grep -o '404 Not Found' ; echo $?)
 
 if [[ $check1 == *'0'* ]] ; then 
 printf "\e[1;93mNot Found!\e[0m\n"
 elif [[ $check1 == *'1'* ]]; then 
 
-printf "\e[1;92m Found!\e[0m https://www.github.com/%s\n" $username
-printf "https://www.github.com/%s\n" $username >> $username.txt
+printf "\e[1;92m Found!\e[0m https://www.github.com/search/%s\n" $username
+printf "https://www.github.com/search/%s\n" $username >> $username.txt
 fi
 
 ## TUMBLR
